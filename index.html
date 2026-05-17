@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--
+  SPDX-License-Identifier: Apache-2.0
+  Copyright 2026 RobotStudyCompanion / TutelEdge OÜ
+
+  shop.rsc.ee — Phase 1 placeholder
+  Sister site to rsc.ee. Hosts the donate link and kit pre-order signup.
+  Will grow into the storefront for RSC hardware.
+-->
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support &amp; Pre-orders · Robot Study Companion</title>
+  <meta name="description" content="Support the Robot Study Companion project and join the kit pre-order mailing list." />
+  <link rel="icon" href="https://rsc.ee/rsc-logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper: #faf6ee;
+      --paper-deep: #f1ebde;
+      --ink: #1a1612;
+      --ink-soft: #5a4f44;
+      --copper: #b25c1f;
+      --copper-deep: #8a4416;
+      --rule: #d8cfbd;
+      --maxw: 720px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Public Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* subtle paper grain */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.08'/></svg>");
+      z-index: -1;
+    }
+
+    a {
+      color: var(--copper-deep);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+    a:hover { color: var(--copper); }
+
+    header.nav {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 28px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    header.nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    header.nav .brand img {
+      height: 28px;
+      width: auto;
+    }
+
+    header.nav .brand-text {
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    header.nav nav {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      display: flex;
+      gap: 18px;
+    }
+
+    header.nav nav a { text-decoration: none; }
+    header.nav nav a:hover { text-decoration: underline; }
+
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    .hero {
+      margin-bottom: 64px;
+    }
+
+    .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper-deep);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: "Fraunces", serif;
+      font-weight: 800;
+      font-size: clamp(36px, 6vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+    }
+
+    .lede {
+      font-size: 18px;
+      color: var(--ink-soft);
+      max-width: 56ch;
+    }
+
+    section.card {
+      background: var(--paper-deep);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 36px 32px;
+      margin-bottom: 28px;
+    }
+
+    section.card h2 {
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 26px;
+      letter-spacing: -0.01em;
+      margin: 0 0 12px;
+    }
+
+    section.card p {
+      color: var(--ink-soft);
+      margin: 0 0 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 12px 22px;
+      border-radius: 4px;
+      font-family: "Public Sans", sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 120ms ease;
+    }
+    .btn:hover { background: var(--copper-deep); color: var(--paper); }
+
+    .embed-slot {
+      background: var(--paper);
+      border: 1px dashed var(--rule);
+      border-radius: 4px;
+      padding: 24px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 13px;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    footer {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      border-top: 1px solid var(--rule);
+      padding-top: 24px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      color: var(--ink-soft);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a { color: var(--ink-soft); }
+
+    @media (max-width: 520px) {
+      header.nav { flex-direction: column; align-items: flex-start; gap: 12px; }
+      main { padding: 40px 20px 64px; }
+      section.card { padding: 28px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <a class="brand" href="https://rsc.ee/">
+      <img src="https://rsc.ee/rsc-logo.png" alt="RSC logo" />
+      <span class="brand-text">Robot Study Companion</span>
+    </a>
+    <nav>
+      <a href="https://rsc.ee/">rsc.ee</a>
+      <a href="https://github.com/RobotStudyCompanion/">github</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">shop.rsc.ee · phase&nbsp;1</div>
+      <h1>Support the project &amp; reserve a kit.</h1>
+      <p class="lede">
+        We're building open hardware companions for learners — PCBs, HATs, power supplies, printed chassis, and the small stuff in between. The storefront is coming. In the meantime, two ways to help.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         DONATE SECTION
+         Replace KOFI_HANDLE below with your actual Ko-fi handle
+         (e.g. https://ko-fi.com/robotstudycompanion)
+         ============================================================ -->
+    <section class="card" id="donate">
+      <h2>☕ Buy us a coffee</h2>
+      <p>
+        RSC runs on community goodwill, weekend solder fumes, and the occasional grant. Every contribution goes toward components, prototyping, and keeping the documentation open.
+      </p>
+      <a class="btn" href="https://ko-fi.com/KOFI_HANDLE" target="_blank" rel="noopener">
+        Donate on Ko-fi →
+      </a>
+    </section>
+
+    <!-- ============================================================
+         MAIL SIGNUP SECTION
+         Replace the <div class="embed-slot"> placeholder with the
+         EmailOctopus embed snippet from your dashboard:
+           EmailOctopus → Lists → [your list] → Forms → Embedded form → Copy code
+         The snippet is a small <form> with EmailOctopus's hosted action URL.
+         ============================================================ -->
+    <section class="card" id="preorder">
+      <h2>📦 Join the kit pre-order list</h2>
+      <p>
+        We'll email you when kits are ready to order — first batch, no spam, easy unsubscribe. Expect occasional updates on hardware revisions and pilot programmes.
+      </p>
+      <div class="embed-slot">
+        &lt;!-- paste EmailOctopus embedded form snippet here --&gt;
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 RSC · Apache-2.0</span>
+    <span><a href="https://rsc.ee/">rsc.ee</a> · <a href="https://github.com/RobotStudyCompanion/shop">source</a></span>
+  </footer>
+</body>
+</html>
